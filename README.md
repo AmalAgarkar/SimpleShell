@@ -4,6 +4,7 @@ Roll No- 2025202023
 
 # Compile the  program
 > g++ command.cpp features.cpp get_line.cpp globals.cpp header.h loop.cpp main.cpp pipeline.cpp signals.cpp history.cpp -o shell
+
 > ./shell
 
 # code workflow
@@ -86,7 +87,7 @@ System Commands
     >run_in_background() → Same, but doesn’t wait (just prints PID).
 
 # summary
-shell is essentially a mini POSIX-compliant shell with:
+This shell is essentially a mini POSIX-compliant shell with:
 
     1.Built-ins (cd, pwd, ls, cat, echo, history, search, pinfo, sort).
 
