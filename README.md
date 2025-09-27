@@ -3,30 +3,30 @@ Name- Amal Agarkar
 Roll No- 2025202023
 
 # Compile the  program
-> g++ command.cpp features.cpp get_line.cpp globals.cpp header.h loop.cpp main.cpp pipeline.cpp signals.cpp history.cpp -o shell
+1. g++ command.cpp features.cpp get_line.cpp globals.cpp header.h loop.cpp main.cpp pipeline.cpp signals.cpp history.cpp -o shell
 
-> ./shell
+2. ./shell
 
 # code workflow
 
 1. main.cpp
 
->Prints a welcome banner.
+    1. Prints a welcome banner.
 
->Initializes signals (init_signals()).
+    2. Initializes signals (init_signals()).
 
->Loads history from a file (load_history()).
+    3. Loads history from a file (load_history()).
 
->Starts the shell_loop().
+    4. Starts the shell_loop().
 
->On exit, saves history (save_history() is commented out in main(), but it’s called from exit and Ctrl+D handling anyway).
+    5. On exit, saves history (save_history() is commented out in main(), but it’s called from exit and Ctrl+D handling anyway).
 
 2. loop.cpp – Core loop and command execution
 Tokenization-
 
-    >tokenize() → splits input into tokens (ls -l > out.txt) becomes [ls, -l, >, out.txt].
+    1. tokenize() → splits input into tokens (ls -l > out.txt) becomes [ls, -l, >, out.txt].
 
-    >Handles:
+    2. Handles:
 
         >whitespace separation
 
@@ -38,53 +38,53 @@ Tokenization-
 
 Command Splitting-
 
-    >split_commands(input, ';') → allows multiple commands in one line.
+    1. split_commands(input, ';') → allows multiple commands in one line.
 
-    >split_pipeline(input) → splits by | into a vector of commands.
+    2. split_pipeline(input) → splits by | into a vector of commands.
 
 execute_command()-
 
-    >Adds the full command line to history (add_history(cmd)).
+    1. Adds the full command line to history (add_history(cmd)).
 
-    >If it contains |, calls execute_pipeline().
+    2. If it contains |, calls execute_pipeline().
 
-    Otherwise:
+        Otherwise:
 
-        >Tokenizes.
+            1. Tokenizes.
+    
+            2. Checks if last token is & → run in background.
+    
+            3. Handles redirections (<, >, >>) by replacing stdin/stdout.
 
-        >Checks if last token is & → run in background.
-
-        >Handles redirections (<, >, >>) by replacing stdin/stdout.
-
-    >Dispatches built-ins:
+    3. Dispatches built-ins:
 
         cd, pwd, echo, history, search, pinfo, ls, cat, sort
 
-    >Else runs external command with     run_system_command().
+    4. Else runs external command with     run_system_command().
 
 After execution, it restores original stdin/stdout.
 
 shell_loop()-
 
->Prints a prompt (get_prompt()).
+1. Prints a prompt (get_prompt()).
 
->Reads input with _getline() (supports history navigation).
+2. Reads input with _getline() (supports history navigation).
 
->If Ctrl+D → save history and exit.
+3. If Ctrl+D → save history and exit.
 
->Splits commands by ;, executes each with execute_command().
+4. Splits commands by ;, executes each with execute_command().
 
 System Commands
 
-    >run_system_command() → Runs non-built-in commands in foreground:
+    1. run_system_command() → Runs non-built-in commands in foreground:
 
-    >Handles <, >, >> redirection.
+    2. Handles <, >, >> redirection.
 
-    >Forks and execvp() in child.
+    3. Forks and execvp() in child.
 
-    >Parent waits, tracks foreground PID (fg_pid, fg_cmd) for signal handling.
+    4. Parent waits, tracks foreground PID (fg_pid, fg_cmd) for signal handling.
 
-    >run_in_background() → Same, but doesn’t wait (just prints PID).
+    5. run_in_background() → Same, but doesn’t wait (just prints PID).
 
 # summary
 This shell is essentially a mini POSIX-compliant shell with:
