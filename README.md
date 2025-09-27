@@ -3,9 +3,9 @@ Name- Amal Agarkar
 Roll No- 2025202023
 
 # Compile the  program
-1. g++ command.cpp features.cpp get_line.cpp globals.cpp header.h loop.cpp main.cpp pipeline.cpp signals.cpp history.cpp -o shell
+> g++ command.cpp features.cpp get_line.cpp globals.cpp header.h loop.cpp main.cpp pipeline.cpp signals.cpp history.cpp -o shell
 
-2. ./shell
+> ./shell
 
 # Code Workflow
 
