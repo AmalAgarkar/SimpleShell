@@ -7,7 +7,7 @@ Roll No- 2025202023
 
 2. ./shell
 
-# code workflow
+# Code Workflow
 
 1. main.cpp
 
@@ -86,7 +86,7 @@ System Commands
 
     5. run_in_background() → Same, but doesn’t wait (just prints PID).
 
-# summary
+# Summary
 This shell is essentially a mini POSIX-compliant shell with:
 
     1.Built-ins (cd, pwd, ls, cat, echo, history, search, pinfo, sort).
